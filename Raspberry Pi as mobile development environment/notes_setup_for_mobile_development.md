@@ -33,7 +33,7 @@ Content:
 Requirements:
 
 - a Raspberry Pi 4B
-- an SD card
+- a SD card
 - an internet connection
 - a computer with a SD card slot or SD card reader
 
