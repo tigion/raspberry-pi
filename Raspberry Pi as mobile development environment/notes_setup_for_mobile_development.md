@@ -146,6 +146,7 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_arm64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit /usr/local/bin
+#rm lazygit lazygit.tar.gz
 ```
 
 ### Neovim
@@ -162,16 +163,34 @@ sudo apt install ripgrep
 # - apt: Unable to locate package fd
 # NOT NEEDED
 
-# nodejs
-# - neovim health check: warning: node not found
-# - apt: Unable to locate package nodejs
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt install nodejs
-
 # tree-sitter
 # - neovim health check: warning: tree-sitter-cli not found
 # - apt: Unable to locate package tree-sitter-cl
 # NOT NEEDED
+```
+
+```sh
+# nodejs
+# - neovim health check: warning: node not found
+# - apt: Unable to locate package nodejs
+# - https://github.com/nodesource/distributions
+
+# 1. Download and import the Nodesource GPG key
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+# 2. Create deb repository
+NODE_MAJOR=20
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+# 3. Run Update and Install
+sudo apt-get update
+sudo apt-get install nodejs -y
+
+# old way
+#curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+#sudo apt install nodejs
 ```
 
 Build Neovim from source (this takes about 15 minutes on the Raspberry Pi 4B):
