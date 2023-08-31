@@ -132,10 +132,10 @@ sudo apt install mosh
 ```sh
 # Python
 # - python (python3) schon vorhanden
-sudo apt install python3, python3-pip, python3-venv
+sudo apt install python3 python3-pip python3-venv
 
 # PHP
-sudo apt install php, composer, php-xml
+sudo apt install php composer php-xml
 ```
 
 ### Lazygit
