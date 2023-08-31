@@ -232,6 +232,9 @@ Sources:
 
 ### Shrink partition and create a new one with the free size
 
+> **Note:**
+> The Raspberry Pi has been successfully booted once with the SD card.
+
 1. Plug the SD card in a Linux Computer
 
 2. List and identify the SD card devices:
@@ -261,7 +264,7 @@ Sources:
 4. Update the partition information for `sdb2` (shrinked size) and a new `sdb3` (freed size):
 
    ```sh
-   $ fdisk /dev/sdb
+   $ sudo fdisk /dev/sdb
    ```
 
    1. Show current partition entries:
@@ -303,6 +306,7 @@ Sources:
       - Partition number: `2`
       - First sector: `default`
       - Last sector: `+52428800K` (the pre-calculated size)
+      - Remove signature: `N`
 
    4. Add partition entry for `/dev/sdb3` with the free size:
 
